@@ -1,558 +1,227 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Açaí do Ceará | Delícias do Norte em Fortaleza</title>
-  <meta name="description" content="Cardápio digital de açaí fresco no Ceará. Peça seu açaí favorito direto pelo WhatsApp!" />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Açaí do Ceará | Delícias do Norte em Fortaleza" />
-  <meta property="og:description" content="Açaí cremoso e personalizado, pronto para você no Ceará. Peça agora pelo WhatsApp!" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_BR" />
-  
-  <!-- Favicon SVG real -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%234B176F'/%3E%3Ccircle cx='35' cy='40' r='8' fill='%236B2D8F'/%3E%3Ccircle cx='60' cy='35' r='6' fill='%238B4DAF'/%3E%3Ccircle cx='50' cy='60' r='10' fill='%236B2D8F'/%3E%3Ccircle cx='70' cy='58' r='7' fill='%238B4DAF'/%3E%3C/svg%3E" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'off-white': '#F8F7F3',
-            'acai-purple': '#4B176F',
-            'acai-light': '#6B2D8F',
-            'cta-green': '#16823B',
-            'neutral-light': '#FFFFFF',
-            'neutral-dark': '#242424',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio de Sites | Projetos em Produção</title>
+    <!-- Font Awesome para os ícones dos cards -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- Google Fonts para tipografia limpa -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
         }
-      }
-    }
-  </script>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background-color: #F8F7F3;
-      color: #242424;
-    }
-    .animate-ping-slow {
-      animation: ping 3s cubic-bezier(0,0,0.2,1) infinite;
-    }
-    @keyframes ping {
-      75%, 100% {
-        transform: scale(1.5);
-        opacity: 0;
-      }
-    }
-    .bg-pattern {
-      background-image: 
-        radial-gradient(circle at 20% 50%, rgba(75, 23, 111, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(22, 130, 59, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(75, 23, 111, 0.05) 0%, transparent 50%);
-    }
-    .hero-gradient {
-      background: linear-gradient(135deg, #F8F7F3 0%, #E8E4DC 50%, #F0EDE5 100%);
-    }
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(75, 23, 111, 0.15);
-    }
-    /* Fallback visual bonito para imagens */
-    .img-fallback {
-      background: linear-gradient(135deg, #4B176F 0%, #6B2D8F 50%, #8B4DAF 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .img-fallback svg {
-      opacity: 0.4;
-    }
-  </style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid de Projetos */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Estrutura do Card */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Botão do Card */
+        .btn-view {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-view:hover {
+            background-color: var(--accent);
+            color: var(--bg-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            body { padding: 1.5rem 0.5rem; }
+        }
+    </style>
 </head>
-<body class="bg-pattern">
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Açaí do Ceará",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Fortaleza",
-      "addressRegion": "CE",
-      "addressCountry": "BR",
-      "streetAddress": "Rua Silva Jatahy, 1234 - Meireles"
-    },
-    "telephone": "+5585999999999",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "-3.7319",
-      "longitude": "-38.5084"
-    },
-    "servesCuisine": "Brazilian",
-    "description": "Loja especializada em açaí fresco no Ceará."
-  }
-  </script>
+<body>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm shadow-md">
-    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="#" class="text-acai-purple font-bold text-2xl tracking-tight flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="#4B176F" aria-hidden="true">
-          <circle cx="8" cy="10" r="3"/>
-          <circle cx="15" cy="8" r="2.5"/>
-          <circle cx="12" cy="15" r="3.5"/>
-          <circle cx="18" cy="14" r="2"/>
-        </svg>
-        Açaí do Ceará
-      </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-semibold">
-        <a href="#inicio" class="text-neutral-dark hover:text-acai-purple transition-colors">Início</a>
-        <a href="#menu" class="text-neutral-dark hover:text-acai-purple transition-colors">Cardápio</a>
-        <a href="#depoimentos" class="text-neutral-dark hover:text-acai-purple transition-colors">Depoimentos</a>
-        <a href="#localizacao" class="text-neutral-dark hover:text-acai-purple transition-colors">Localização</a>
-      </nav>
+    <div class="container">
+        <header>
+            <h1>Meu Portfólio de Sites</h1>
+            <p>Explore abaixo os projetos e conceitos de landing pages desenvolvidos para diferentes nichos de mercado.</p>
+        </header>
+
+        <main class="catalog-grid">
+            
+            <!-- Card: Pintor -->
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-paint-roller"></i></div>
+                    <h3>Pintor Residencial</h3>
+                    <p>Landing page focada em conversão, exibição de antes/depois e orçamento rápido para serviços de pintura.</p>
+                </div>
+                <a href="./site-pintor/" class="btn-view">Acessar Demo</a>
+            </div>
+
+            <!-- Card: Psicólogo -->
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>Psicologia Clínica</h3>
+                    <p>Design minimalista e acolhedor, focado em agendamento de consultas e apresentação de especialidades.</p>
+                </div>
+                <a href="./site-psicologo/" class="btn-view">Acessar Demo</a>
+            </div>
+
+            <!-- Card: Loja de Açaí -->
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                    <h3>Loja de Açaí</h3>
+                    <p>Menu digital interativo integrado com direcionamento de pedidos direto para o WhatsApp comercial.</p>
+                </div>
+                <a href="./site-acai/" class="btn-view">Acessar Demo</a>
+            </div>
+
+            <!-- Card: Barbearia -->
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-scissors"></i></div>
+                    <h3>Barbearia Moderna</h3>
+                    <p>Visual urbano "Old School" com tabela de preços e integração para sistemas de reserva de horário.</p>
+                </div>
+                <a href="./site-barbearia/" class="btn-view">Acessar Demo</a>
+            </div>
+
+            <!-- Card: Geladão -->
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-ice-cream"></i></div>
+                    <h3>Geladão Gourmet</h3>
+                    <p>Página vibrante e colorida para destacar sabores artesanais e combos para eventos e revendedores.</p>
+                </div>
+                <a href="./site-geladao/" class="btn-view">Acessar Demo</a>
+            </div>
+
+            <!-- Card: Corretor -->
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                    <h3>Corretor de Imóveis</h3>
+                    <p>Vitrine de imóveis com filtros visuais dinâmicos e captura de leads qualificados para o setor imobiliário.</p>
+                </div>
+                <a href="./site-corretor/" class="btn-view">Acessar Demo</a>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Seu Nome. Desenvolvido e hospedado com <a href="https://github.com" target="_blank">GitHub Pages</a>.</p>
+        </footer>
     </div>
-  </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-gradient py-16 sm:py-24">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row gap-12 items-center">
-          <div class="md:w-1/2 space-y-6">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-acai-purple leading-tight">
-              Seu açaí do seu jeito, <span class="text-cta-green">pronto para pedir</span>
-            </h1>
-            <p class="text-lg text-gray-700 leading-relaxed">
-              Açaí cremoso e fresco preparado especialmente para você aqui em Fortaleza. 
-              Combinamos o melhor do açaí da Amazônia com os complementos que você ama!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="https://wa.me/5585999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." 
-                 class="inline-flex items-center justify-center bg-cta-green text-white font-bold py-4 px-8 rounded-full shadow-xl hover:bg-emerald-700 transition-all transform hover:scale-105"
-                 aria-label="Pedir pelo WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Pedir pelo WhatsApp
-              </a>
-            </div>
-            <div class="flex items-center gap-6 pt-4 text-sm text-gray-600">
-              <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cta-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                Entrega Rápida
-              </div>
-              <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-cta-green mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                Ingredientes Frescos
-              </div>
-            </div>
-          </div>
-          <div class="md:w-1/2 flex justify-center">
-            <div class="relative w-full max-w-md">
-              <div class="absolute inset-0 bg-acai-purple rounded-3xl transform rotate-6 opacity-20"></div>
-              <img src="https://images.unsplash.com/photo-1590301157890-4810ed6a4067?w=600&h=600&fit=crop" 
-                   alt="Taça de açaí cremoso com frutas tropicais e granola" 
-                   class="relative rounded-3xl shadow-2xl w-full h-auto object-cover aspect-square" 
-                   loading="eager"
-                   onerror="this.onerror=null;this.outerHTML='<div class=\'relative rounded-3xl shadow-2xl w-full aspect-square img-fallback\'><svg xmlns=\'http://www.w3.org/2000/svg\' class=\'h-32 w-32 text-white\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><circle cx=\'8\' cy=\'10\' r=\'3\'/><circle cx=\'15\' cy=\'8\' r=\'2.5\'/><circle cx=\'12\' cy=\'15\' r=\'3.5\'/><circle cx=\'18\' cy=\'14\' r=\'2\'/></svg></div>';" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menu" class="py-16 container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-acai-purple mb-4">Escolha seu açaí</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto">Confira nosso cardápio completo e peça agora mesmo pelo WhatsApp!</p>
-      </div>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Açaí 500 ml -->
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
-          <div class="h-56 overflow-hidden img-fallback">
-            <img src="1789911501.png" 
-                 alt="Açaí 500 ml com banana, morango e granola" 
-                 class="w-full h-full object-cover" 
-                 loading="lazy"
-                 onerror="this.style.display='none';" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-acai-purple">Açaí 500 ml</h3>
-            <p class="text-sm text-gray-600 mb-4">Açaí cremoso com opções de complementos à sua escolha.</p>
-            <p class="font-bold text-2xl mb-4 text-cta-green">R$ 22,00</p>
-            <button onclick="orderProduct('Açaí 500 ml')" 
-                    class="w-full bg-cta-green text-white font-semibold py-3 px-4 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                    aria-label="Pedir Açaí 500 ml">
-              Pedir este açaí
-            </button>
-          </div>
-        </article>
-
-        <!-- Açaí 700 ml -->
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
-          <div class="h-56 overflow-hidden img-fallback">
-            <img src="1789911506.png" 
-                 alt="Açaí 700 ml tamanho grande com frutas" 
-                 class="w-full h-full object-cover" 
-                 loading="lazy"
-                 onerror="this.style.display='none';" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-acai-purple">Açaí 700 ml</h3>
-            <p class="text-sm text-gray-600 mb-4">Mais açaí para matar a fome e a vontade!</p>
-            <p class="font-bold text-2xl mb-4 text-cta-green">R$ 28,00</p>
-            <button onclick="orderProduct('Açaí 700 ml')" 
-                    class="w-full bg-cta-green text-white font-semibold py-3 px-4 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                    aria-label="Pedir Açaí 700 ml">
-              Pedir este açaí
-            </button>
-          </div>
-        </article>
-
-        <!-- Combo Açaí + Bebida -->
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
-          <div class="h-56 overflow-hidden img-fallback">
-            <img src="1789911512.png" 
-                 alt="Combo de açaí com bebida gelada" 
-                 class="w-full h-full object-cover" 
-                 loading="lazy"
-                 onerror="this.style.display='none';" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-acai-purple">Combo Açaí + Bebida</h3>
-            <p class="text-sm text-gray-600 mb-4">Seu açaí favorito acompanhado de uma bebida gelada.</p>
-            <p class="font-bold text-2xl mb-4 text-cta-green">R$ 32,00</p>
-            <button onclick="orderProduct('Combo Açaí + Bebida')" 
-                    class="w-full bg-cta-green text-white font-semibold py-3 px-4 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                    aria-label="Pedir Combo Açaí + Bebida">
-              Pedir este combo
-            </button>
-          </div>
-        </article>
-
-        <!-- Açaí Tradicional -->
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
-          <div class="h-56 overflow-hidden img-fallback">
-            <img src="1789911517.png" 
-                 alt="Açaí tradicional com banana e granola" 
-                 class="w-full h-full object-cover" 
-                 loading="lazy"
-                 onerror="this.style.display='none';" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-acai-purple">Açaí Tradicional</h3>
-            <p class="text-sm text-gray-600 mb-4">Açaí puro com banana e granola. O clássico que você ama.</p>
-            <p class="font-bold text-2xl mb-4 text-cta-green">R$ 24,00</p>
-            <button onclick="orderProduct('Açaí Tradicional')" 
-                    class="w-full bg-cta-green text-white font-semibold py-3 px-4 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                    aria-label="Pedir Açaí Tradicional">
-              Pedir este açaí
-            </button>
-          </div>
-        </article>
-
-        <!-- Açaí com Morango -->
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
-          <div class="h-56 overflow-hidden img-fallback">
-            <img src="1789911521.png" 
-                 alt="Açaí com morango fresco e leite em pó" 
-                 class="w-full h-full object-cover" 
-                 loading="lazy"
-                 onerror="this.style.display='none';" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-acai-purple">Açaí com Morango</h3>
-            <p class="text-sm text-gray-600 mb-4">Açaí cremoso com morangos frescos e leite em pó.</p>
-            <p class="font-bold text-2xl mb-4 text-cta-green">R$ 26,00</p>
-            <button onclick="orderProduct('Açaí com Morango')" 
-                    class="w-full bg-cta-green text-white font-semibold py-3 px-4 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                    aria-label="Pedir Açaí com Morango">
-              Pedir este açaí
-            </button>
-          </div>
-        </article>
-
-        <!-- Açaí Fitness -->
-        <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
-          <div class="h-56 overflow-hidden img-fallback">
-            <img src="1789911529.png" 
-                 alt="Açaí fitness com whey protein e aveia" 
-                 class="w-full h-full object-cover" 
-                 loading="lazy"
-                 onerror="this.style.display='none';" />
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-acai-purple">Açaí Fitness</h3>
-            <p class="text-sm text-gray-600 mb-4">Açaí com whey protein, banana e aveia. Energia pura!</p>
-            <p class="font-bold text-2xl mb-4 text-cta-green">R$ 29,00</p>
-            <button onclick="orderProduct('Açaí Fitness')" 
-                    class="w-full bg-cta-green text-white font-semibold py-3 px-4 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                    aria-label="Pedir Açaí Fitness">
-              Pedir este açaí
-            </button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section id="depoimentos" class="py-16 bg-white">
-      <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-acai-purple mb-4">O que nossos clientes dizem</h2>
-          <p class="text-cta-green font-semibold text-lg">+500 clientes atendidos</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Testimonial 1 -->
-          <div class="bg-off-white p-6 rounded-2xl border border-gray-200">
-            <div class="flex mb-4" aria-label="5 estrelas">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
-            <p class="italic mb-4 text-gray-700">"O melhor açaí de Fortaleza! Cremoso, geladinho e com complementos frescos. Recomendo demais!"</p>
-            <div class="flex items-center">
-              <div class="bg-gradient-to-br from-purple-400 to-pink-400 rounded-full h-12 w-12 flex items-center justify-center mr-3 text-white font-bold">
-                MS
-              </div>
-              <div>
-                <span class="font-semibold text-sm block">Maria Silva</span>
-                <span class="text-xs text-gray-500">Meireles</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="bg-off-white p-6 rounded-2xl border border-gray-200">
-            <div class="flex mb-4" aria-label="5 estrelas">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
-            <p class="italic mb-4 text-gray-700">"Entrega super rápida e o açaí chegou perfeito! Já sou cliente fiel. O combo vale muito a pena!"</p>
-            <div class="flex items-center">
-              <div class="bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full h-12 w-12 flex items-center justify-center mr-3 text-white font-bold">
-                JO
-              </div>
-              <div>
-                <span class="font-semibold text-sm block">João Oliveira</span>
-                <span class="text-xs text-gray-500">Aldeota</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="bg-off-white p-6 rounded-2xl border border-gray-200">
-            <div class="flex mb-4" aria-label="5 estrelas">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
-            <p class="italic mb-4 text-gray-700">"O açaí fitness é perfeito para pós-treino! Qualidade excelente e preço justo. Super recomendo!"</p>
-            <div class="flex items-center">
-              <div class="bg-gradient-to-br from-green-400 to-emerald-400 rounded-full h-12 w-12 flex items-center justify-center mr-3 text-white font-bold">
-                AL
-              </div>
-              <div>
-                <span class="font-semibold text-sm block">Ana Lima</span>
-                <span class="text-xs text-gray-500">Cocó</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Location Section -->
-    <section id="localizacao" class="py-16 bg-gradient-to-br from-purple-50 to-green-50">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto">
-          <h2 class="text-3xl font-bold text-center text-acai-purple mb-8">Encontre nossa loja</h2>
-          <div class="bg-white rounded-3xl p-8 shadow-xl text-center">
-            <div class="mb-6">
-              <p class="text-2xl font-bold text-acai-purple mb-2">📍 Açaí do Ceará</p>
-              <p class="text-gray-600 mb-1">Rua Silva Jatahy, 1234 - Meireles</p>
-              <p class="text-gray-600 mb-4">Fortaleza - CE, 60160-110</p>
-              <p class="text-sm text-gray-500">Próximo à Av. Beira Mar</p>
-            </div>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://www.google.com/maps/place/Meireles,+Fortaleza+-+CE/@-3.7319,-38.5084,15z" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="inline-flex items-center justify-center bg-acai-purple text-white font-semibold py-3 px-6 rounded-full hover:bg-purple-800 transition-all transform hover:scale-105"
-                 aria-label="Ver localização no Google Maps">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                Ver no Google Maps
-              </a>
-              <a href="https://wa.me/5585999999999?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20localiza%C3%A7%C3%A3o." 
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="inline-flex items-center justify-center bg-cta-green text-white font-semibold py-3 px-6 rounded-full hover:bg-emerald-700 transition-all transform hover:scale-105"
-                 aria-label="Falar no WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Tirar Dúvidas
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-16 bg-gradient-to-r from-acai-purple to-acai-light text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Pronto para saborear?</h2>
-        <p class="mb-8 max-w-2xl mx-auto text-lg text-purple-100">Peça agora seu açaí favorito e receba fresquinho na sua casa ou retire na loja!</p>
-        <a href="https://wa.me/5585999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." 
-           class="inline-flex items-center justify-center bg-cta-green text-white font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-emerald-700 transition-all transform hover:scale-105 text-lg"
-           aria-label="Pedir agora pelo WhatsApp">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Pedir agora pelo WhatsApp
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-neutral-dark text-white py-10">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div class="text-center md:text-left">
-          <p class="font-bold text-2xl mb-1">🫐 Açaí do Ceará</p>
-          <p class="text-gray-400 text-sm">Meireles, Fortaleza - CE</p>
-        </div>
-        <div class="flex items-center bg-white/10 px-4 py-2 rounded-full">
-          <div class="relative flex h-3 w-3 mr-2">
-            <span class="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-          </div>
-          <span class="text-sm font-medium">Atendimento pelo WhatsApp</span>
-        </div>
-        <div class="flex space-x-4">
-          <a href="https://wa.me/5585999999999" class="text-white hover:text-cta-green transition-colors" aria-label="WhatsApp">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-          </a>
-          <a href="https://www.google.com/maps/place/Meireles,+Fortaleza+-+CE/@-3.7319,-38.5084,15z" target="_blank" rel="noopener noreferrer" class="text-white hover:text-acai-purple transition-colors" aria-label="Localização">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
-        <p>&copy; 2026 Açaí do Ceará. Todos os direitos reservados.</p>
-        <p class="mt-2">Feito com 💜 em Fortaleza</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/5585999999999?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." 
-     class="fixed bottom-6 right-6 z-50 bg-cta-green text-white p-4 rounded-full shadow-2xl hover:bg-emerald-700 transition-all transform hover:scale-110 active:scale-95"
-     aria-label="Peça agora pelo WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-md border-2 border-white animate-pulse">Peça já!</span>
-  </a>
-
-  <!-- JavaScript -->
-  <script>
-    // Business configuration
-    const BUSINESS_CONFIG = {
-      whatsappNumber: '5585999999999' // Replace with actual number
-    };
-
-    function encodeWhatsAppMessage(message) {
-      return encodeURIComponent(message);
-    }
-
-    function orderProduct(productName) {
-      const message = `Olá! Gostaria de pedir 1 ${productName}. Pode me passar as opções de complementos?`;
-      const encodedMessage = encodeWhatsAppMessage(message);
-      const url = `https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodedMessage}`;
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        const target = document.querySelector(targetId);
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
